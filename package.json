@@ -1,0 +1,27 @@
+{
+  "name": "empty-project-template",
+  "main": "node_modules/expo/AppEntry.js",
+  "private": true,
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "eject": "expo eject"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cors": "^2.8.4",
+    "expo": "^30.0.0",
+    "express": "^4.16.3",
+    "hapi": "^17.6.0",
+    "inert": "^5.1.0",
+    "nodemon": "^1.18.4",
+    "react": "16.3.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-29.0.0.tar.gz",
+    "react-native-axios": "^0.17.1",
+    "react-native-xml2js": "^1.0.3",
+    "vision": "^5.4.0",
+    "whatwg-fetch": "^2.0.4"
+  },
+  "devDependencies": {}
+}
