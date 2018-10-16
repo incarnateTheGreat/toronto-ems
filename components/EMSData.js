@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { ListView,
+         RefreshControl,
          StyleSheet, 
          ScrollView,
          View,
@@ -16,6 +17,7 @@ export default class EMSData extends React.Component {
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
             data: ds,
+            refreshing: false,
             updateTimeStamp: null
         }
     }
@@ -30,8 +32,9 @@ export default class EMSData extends React.Component {
                     
                     this.setState({
                         data: this.state.data.cloneWithRows(data),
+                        refreshing: false,
                         updateTimeStamp: updateTimeStamp
-                    })
+                    });
                 });
             })
             .catch(e => {
@@ -111,13 +114,24 @@ export default class EMSData extends React.Component {
         )
     }
 
+    onRefresh() {
+        this.setState({ refreshing: true }, () => {            
+            this.fetchData();
+        });
+    }
+
     componentDidMount() {
         this.fetchData();
     }
 
     render() {
         return (
-            <ScrollView>
+            <ScrollView refreshControl={
+                <RefreshControl
+                    refreshing={this.state.refreshing}
+                    onRefresh={this.onRefresh.bind(this)}
+                />
+            }>
                 <View>
                     <Text style={styles.timestamp}>{this.state.updateTimeStamp ? `Updated: ${this.state.updateTimeStamp}` : null}</Text>
                 </View>
