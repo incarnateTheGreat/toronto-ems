@@ -1,5 +1,6 @@
-import React from 'react'
-import axios from 'axios'
+import React from 'react';
+import axios from 'axios';
+import Spinner from 'react-native-loading-spinner-overlay';
 import { ListView,
          RefreshControl,
          StyleSheet, 
@@ -17,6 +18,7 @@ export default class EMSData extends React.Component {
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
             data: ds,
+            isLoading: true,
             refreshing: false,
             updateTimeStamp: null
         }
@@ -33,7 +35,11 @@ export default class EMSData extends React.Component {
                     this.setState({
                         data: this.state.data.cloneWithRows(data),
                         refreshing: false,
-                        updateTimeStamp: updateTimeStamp
+                        updateTimeStamp
+                    }, () => {
+                        if (this.state.isLoading) {
+                            this.setState({ isLoading: false });
+                        }
                     });
                 });
             })
@@ -126,25 +132,43 @@ export default class EMSData extends React.Component {
 
     render() {
         return (
-            <ScrollView refreshControl={
-                <RefreshControl
-                    refreshing={this.state.refreshing}
-                    onRefresh={this.onRefresh.bind(this)}
-                />
-            }>
+            <ScrollView
+                contentContainerStyle={styles.scroller}
+                refreshControl={
+                    <RefreshControl
+                        refreshing={this.state.refreshing}
+                        onRefresh={this.onRefresh.bind(this)}
+                    />
+                }>
                 <View>
-                    <Text style={styles.timestamp}>{this.state.updateTimeStamp ? `Updated: ${this.state.updateTimeStamp}` : null}</Text>
+                    <Spinner
+                        visible={this.state.isLoading}
+                    />
+                    <View>
+                        <Text style={styles.timestamp}>{this.state.updateTimeStamp ? `Updated: ${this.state.updateTimeStamp}` : null}</Text>
+                    </View>
+                    <ListView
+                        dataSource={this.state.data}
+                        renderRow={this.renderRow.bind(this)}
+                        style={styles.listView} 
+                    />
                 </View>
-                <ListView
-                    dataSource={this.state.data}
-                    renderRow={this.renderRow.bind(this)} 
-                />
             </ScrollView>
         )
     }
 }
 
 const styles = StyleSheet.create({
+    scroller: {
+        display: 'flex',
+        height: '100%',
+    },
+    loader: {
+        alignItems: 'center',
+        display: 'flex',
+        height: '100%',
+        justifyContent: 'center'
+    },
     paragraph: {
         paddingTop: 10,
         paddingBottom: 10
@@ -183,5 +207,8 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontWeight: 'bold',
         padding: 10
+    },
+    listView: {
+        paddingBottom: 75
     }
 })

@@ -19,6 +19,7 @@
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-29.0.0.tar.gz",
     "react-native-axios": "^0.17.1",
+    "react-native-loading-spinner-overlay": "^1.0.1",
     "react-native-xml2js": "^1.0.3",
     "vision": "^5.4.0",
     "whatwg-fetch": "^2.0.4"
