@@ -1,12 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import Spinner from 'react-native-loading-spinner-overlay';
+import styled from 'styled-components/native';
 import { ListView,
          RefreshControl,
          StyleSheet, 
          ScrollView,
-         View,
-         Text } from 'react-native';
+         View } from 'react-native';
 
 import EMSReport from '../components/EMSReport';
 import { SERVER_PATH } from '../constants/constants';
@@ -83,9 +83,9 @@ export default class EMSData extends React.Component {
                     visible={this.state.isLoading}
                 />
                 <View>
-                    <Text style={styles.timestamp}>
+                    <Timestamp>
                         {this.state.updateTimeStamp ? `Updated: ${this.state.updateTimeStamp}` : null}
-                    </Text>
+                    </Timestamp>
                 </View>
                 <ListView
                     dataSource={this.state.data}
@@ -96,25 +96,10 @@ export default class EMSData extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({
-    scroller: {
-        display: 'flex',
-        height: '100%'
-    },
-    loader: {
-        alignItems: 'center',
-        display: 'flex',
-        height: '100%',
-        justifyContent: 'center'
-    },
-    paragraph: {
-        paddingTop: 10,
-        paddingBottom: 10
-    },
-    timestamp: {
-        backgroundColor: '#165788',
-        color: '#fff',
-        fontWeight: 'bold',
-        padding: 10
-    }
-})
+// Styled Components
+const Timestamp = styled.Text`
+    background-color: #165788;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+`;

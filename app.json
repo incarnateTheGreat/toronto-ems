@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "newApp",
-    "description": "This project is really great.",
-    "slug": "newApp",
+    "name": "Toronto EMS",
+    "description": "Toronto EMS data using React Native",
+    "slug": "toronto-ems",
     "privacy": "public",
     "sdkVersion": "29.0.0",
     "platforms": ["ios", "android"],

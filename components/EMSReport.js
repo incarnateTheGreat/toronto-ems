@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet,
          Text,
          View } from 'react-native';
+import styled from 'styled-components/native';
 
 import { buildDateString } from '../helpers/helpers';
 
@@ -18,68 +19,66 @@ export default class EMSReport extends React.Component {
 
         // Get Date String
         const dateString = buildDateString(dispatch_time);
-        
-        // Alternate background of sections.
-        // const bgColor = rowID % 2 === 0 ? '#7EABCC' : 'transparent';
-        const style = [
-            styles.listContainer, 
-            // {'backgroundColor': bgColor}
-        ];
 
         return (
-            <View style={style}>
+            <ListContainer>
                 { event_type ? <Text style={styles.listContainer_headerText}>{event_type}</Text> : null }
                 { prime_street || prime_street === '' ? 
-                    <View style={styles.listContainer_details}>
-                        <Text style={styles.listContainer_title}>Postal Code/Primary Street:</Text>
-                        <Text style={styles.listContainer_text}>{prime_street}</Text>
-                    </View> : null }
+                    <Details>
+                        <DetailsTitle>Postal Code/Primary Street:</DetailsTitle>
+                        <DetailsText>{prime_street}</DetailsText>
+                    </Details> : null }
                 { dispatch_time ? 
-                    <View style={styles.listContainer_details}>
-                        <Text style={styles.listContainer_title}>Dispatch time:</Text>
-                        <Text style={styles.listContainer_text}>{dateString}</Text>
-                    </View> : null }
+                    <Details>
+                        <DetailsTitle>Dispatch time:</DetailsTitle>
+                        <DetailsText>{dateString}</DetailsText>
+                    </Details> : null }
                 { cross_streets ? 
-                    <View style={styles.listContainer_details}>
-                        <Text style={styles.listContainer_title}>Cross Streets:</Text>
-                        <Text style={styles.listContainer_text}>{cross_streets}</Text>
-                    </View> : null }
+                    <Details>
+                        <DetailsTitle>Cross Streets:</DetailsTitle>
+                        <DetailsText>{cross_streets}</DetailsText>
+                    </Details> : null }
                 { alarm_lev ? 
-                    <View style={styles.listContainer_details}>
-                        <Text style={styles.listContainer_title}>Alarm Level:</Text>
-                        <Text style={styles.listContainer_text}>{alarm_lev}</Text>
-                    </View> : null }
+                    <Details>
+                        <DetailsTitle>Alarm Level:</DetailsTitle>
+                        <DetailsText>{alarm_lev}</DetailsText>
+                    </Details> : null }
                 { event_num ? 
-                <View style={styles.listContainer_details}>
-                    <Text style={styles.listContainer_title}>Event Number:</Text>
-                    <Text style={styles.listContainer_text}>{event_num}</Text>
-                </View> : null }
-            </View>
+                <Details>
+                    <DetailsTitle>Event Number:</DetailsTitle>
+                    <DetailsText>{event_num}</DetailsText>
+                </Details> : null }
+            </ListContainer>
         )
     }
 }
 
+// Styled Components
+const ListContainer = styled.View`
+    border-bottom-width: ${StyleSheet.hairlineWidth};
+    border-style: solid;
+    padding: 10px;
+    width: 100%;
+`;
+
+const Details = styled.View`
+    flex: 1;
+    flex-direction: row;
+`;
+
+const DetailsTitle = styled.Text`
+    color: #FFF;
+    font-size: 16px;
+    font-weight: bold;
+`;
+
+const DetailsText = styled.Text`
+    color: #FFF;
+    font-size: 16px;
+    padding: 0 0 0 5px;
+`;
+
 const styles = StyleSheet.create({
-    listContainer: {
-        borderBottomColor: '#000',
-        borderBottomWidth: StyleSheet.hairlineWidth,
-        padding: 10,
-        width: '100%'
-    },
-    listContainer_details: {
-        flex: 1,
-        flexDirection: 'row'
-    },
-    listContainer_title: {
-        color: '#fff',
-        fontSize: 16,
-        fontWeight: 'bold'
-    },
-    listContainer_text: {
-        color: '#fff',
-        fontSize: 16,
-        paddingLeft: 5
-    },
     listContainer_headerText: {
         color: '#fff',
         fontSize: 23,

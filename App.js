@@ -2,6 +2,7 @@ import React from 'react';
 import { Platform,
          StyleSheet,
          View } from 'react-native';
+import styled from 'styled-components/native';
 
 import EMSData from './containers/EMSData';
 import Header from './components/Header';
@@ -24,31 +25,31 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <AppContainer>
         {this.state.isLoading ? (
           <View>
             <Splash />
           </View>
         ) : (
-          <View style={styles.thing}>
+          <AppView>
             <Header />
             <EMSData />
-          </View>
+          </AppView>
         )}
-      </View>
+      </AppContainer>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-      backgroundColor: '#7EABCC',
-      flex: 1,
-      flexDirection: 'column',
-      paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight
-  },
-  thing: {
-      display: 'flex',
-      height: '100%'
-  }
-});
+// Styled Components
+const AppContainer = styled.View`
+    background-color: #7EABCC;
+    flex: 1;
+    flexDirection: column;
+    paddingTop: ${Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight};
+`;
+
+const AppView = styled.View`
+    display: flex;
+    height: 100%;
+`;
