@@ -1,10 +1,10 @@
 import React from 'react';
-import { Platform,
-         View } from 'react-native';
+import { Platform, View } from 'react-native';
 import styled from 'styled-components/native';
+import { createDrawerNavigator } from 'react-navigation';
 
-import EMSData from './containers/EMSData';
-import Header from './components/Header';
+import HomeScreen from './containers/HomeScreen';
+import SettingsScreen from './containers/SettingsScreen';
 import Splash from './components/Splash';
 
 export default class App extends React.Component {
@@ -24,21 +24,28 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <AppContainer>
-        {this.state.isLoading ? (
-          <View>
-            <Splash />
-          </View>
-        ) : (
-          <AppView>
-            <Header />
-            <EMSData />
-          </AppView>
-        )}
-      </AppContainer>
+		<AppContainer>
+			{this.state.isLoading ? (
+					<View>
+						<Splash />
+					</View>
+				) : (
+					<RouterNav />
+				)
+			}
+		</AppContainer>
     );
   }
 }
+
+const RouterNav = createDrawerNavigator({
+  Home: {
+    screen: HomeScreen
+  },
+  Settings: {
+    screen: SettingsScreen
+  }
+});
 
 // Styled Components
 const AppContainer = styled.View`
@@ -46,9 +53,4 @@ const AppContainer = styled.View`
     flex: 1;
     flexDirection: column;
     paddingTop: ${Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight};
-`;
-
-const AppView = styled.View`
-    display: flex;
-    height: 100%;
 `;
