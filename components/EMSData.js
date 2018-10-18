@@ -126,6 +126,15 @@ export default class EMSData extends React.Component {
         });
     }
 
+    refreshControl() {
+        return (
+            <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={this.onRefresh.bind(this)}
+            />
+        );
+    }
+
     componentDidMount() {
         this.fetchData();
     }
@@ -133,26 +142,22 @@ export default class EMSData extends React.Component {
     render() {
         return (
             <ScrollView
-                contentContainerStyle={styles.scroller}
-                refreshControl={
-                    <RefreshControl
-                        refreshing={this.state.refreshing}
-                        onRefresh={this.onRefresh.bind(this)}
-                    />
-                }>
+                refreshControl={this.refreshControl()}
+            >
+                <Spinner
+                    animation='fade'
+                    visible={this.state.isLoading}
+                />
                 <View>
-                    <Spinner
-                        visible={this.state.isLoading}
-                    />
-                    <View>
-                        <Text style={styles.timestamp}>{this.state.updateTimeStamp ? `Updated: ${this.state.updateTimeStamp}` : null}</Text>
-                    </View>
-                    <ListView
-                        dataSource={this.state.data}
-                        renderRow={this.renderRow.bind(this)}
-                        style={styles.listView} 
-                    />
+                    <Text style={styles.timestamp}>
+                        {this.state.updateTimeStamp ? `Updated: ${this.state.updateTimeStamp}` : null}
+                    </Text>
                 </View>
+                <ListView
+                    dataSource={this.state.data}
+                    renderRow={this.renderRow.bind(this)}
+                    style={styles.listView} 
+                />
             </ScrollView>
         )
     }
@@ -161,7 +166,7 @@ export default class EMSData extends React.Component {
 const styles = StyleSheet.create({
     scroller: {
         display: 'flex',
-        height: '100%',
+        height: '100%'
     },
     loader: {
         alignItems: 'center',
