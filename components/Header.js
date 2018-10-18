@@ -1,24 +1,24 @@
-import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import React from 'react';
+import styled from 'styled-components/native';
 
 export default class Header extends React.Component {
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.text}>Toronto EMS Reports</Text>
-            </View>
+            <HeaderContainer>
+                <HeaderText>Toronto EMS Reports</HeaderText>
+            </HeaderContainer>
         )
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#064e80',
-        padding: 10
-    },
-    text: {
-        color: 'white',
-        fontWeight: 'bold',
-        fontSize: 26
-    }
-})
+// Styled Components
+const HeaderContainer = styled.View`
+    background-color: #064e80;
+    padding: 10px;
+`;
+
+const HeaderText = styled.Text`
+    color: #FFF;
+    font-weight: bold;
+    font-size: 26px;
+`;

@@ -4,7 +4,6 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import styled from 'styled-components/native';
 import { ListView,
          RefreshControl,
-         StyleSheet, 
          ScrollView,
          View } from 'react-native';
 

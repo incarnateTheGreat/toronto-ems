@@ -1,7 +1,5 @@
 import React from 'react';
-import { StyleSheet,
-         Text,
-         View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
 import { buildDateString } from '../helpers/helpers';
@@ -22,7 +20,7 @@ export default class EMSReport extends React.Component {
 
         return (
             <ListContainer>
-                { event_type ? <Text style={styles.listContainer_headerText}>{event_type}</Text> : null }
+                { event_type ? <ListContainerHeadline>{event_type}</ListContainerHeadline> : null }
                 { prime_street || prime_street === '' ? 
                     <Details>
                         <DetailsTitle>Postal Code/Primary Street:</DetailsTitle>
@@ -61,6 +59,13 @@ const ListContainer = styled.View`
     width: 100%;
 `;
 
+const ListContainerHeadline = styled.Text`
+    color: #FFF;
+    font-size: 23px;
+    font-weight: bold;
+    padding: 0 0 10px;
+`;
+
 const Details = styled.View`
     flex: 1;
     flex-direction: row;
@@ -77,15 +82,3 @@ const DetailsText = styled.Text`
     font-size: 16px;
     padding: 0 0 0 5px;
 `;
-
-const styles = StyleSheet.create({
-    listContainer_headerText: {
-        color: '#fff',
-        fontSize: 23,
-        fontWeight: 'bold',
-        paddingBottom: 10
-    },
-    restaurantName: {
-        fontWeight: 'bold'
-    }
-})
