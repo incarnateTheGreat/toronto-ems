@@ -3,9 +3,9 @@ import { Platform,
          StyleSheet,
          View } from 'react-native';
 
-import Header from './components/Header'
-import EMSData from './components/EMSData'
-import Splash from './components/Splash'
+import EMSData from './containers/EMSData';
+import Header from './components/Header';
+import Splash from './components/Splash';
 
 export default class App extends React.Component {
   constructor() {

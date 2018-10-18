@@ -7,9 +7,9 @@ import { ListView,
          ScrollView,
          View,
          Text } from 'react-native';
+import { REFRESH_TIME, SERVER_PATH } from '../constants/constants';
 
 const parseString = require('react-native-xml2js').parseString;
-const URL = 'https://www.toronto.ca/data/fire/livecad.xml';
 
 export default class EMSData extends React.Component {
     constructor() {
@@ -24,7 +24,7 @@ export default class EMSData extends React.Component {
         }
     }
     fetchData() {
-        axios(URL)
+        axios(SERVER_PATH)
             .then(res => res.data)
             .then(res => {
                 parseString(res, { trim: true, explicitArray: false }, (err, results) => {
