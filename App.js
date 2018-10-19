@@ -1,6 +1,8 @@
 import React from 'react';
 import { Platform, View } from 'react-native';
 import styled from 'styled-components/native';
+import { Root } from "native-base";
+import { Font } from "expo";
 import { createDrawerNavigator } from 'react-navigation';
 
 import HomeScreen from './containers/HomeScreen';
@@ -17,6 +19,11 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
+	Font.loadAsync({
+		Roboto: require("native-base/Fonts/Roboto.ttf"),
+		Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
+	});
+
     setTimeout(() => {
       this.setState({ isLoading: false });
     }, 1000);
@@ -24,16 +31,18 @@ export default class App extends React.Component {
 
   render() {
     return (
-		<AppContainer>
-			{this.state.isLoading ? (
-					<View>
-						<Splash />
-					</View>
-				) : (
-					<RouterNav />
-				)
-			}
-		</AppContainer>
+		<Root>
+			<AppContainer>
+				{this.state.isLoading ? (
+						<View>
+							<Splash />
+						</View>
+					) : (
+						<RouterNav />
+					)
+				}
+			</AppContainer>
+		</Root>
     );
   }
 }
@@ -49,7 +58,6 @@ const RouterNav = createDrawerNavigator({
 
 // Styled Components
 const AppContainer = styled.View`
-    background-color: #7EABCC;
     flex: 1;
     flexDirection: column;
     paddingTop: ${Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight};

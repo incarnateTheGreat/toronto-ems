@@ -1,8 +1,13 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
+import { Card,
+         Content,
+         List,
+         ListItem } from 'native-base';
 
-import { buildDateString } from '../helpers/helpers';
+import { buildDateString, 
+         isEmpty } from '../helpers/helpers';
 
 export default class EMSReport extends React.Component {
     render() {
@@ -16,52 +21,78 @@ export default class EMSReport extends React.Component {
             units_disp } = this.props.data;
 
         // Get Date String
-        const dateString = buildDateString(dispatch_time);
+        const dateString = buildDateString(dispatch_time, true);
 
         return (
             <ListContainer>
-                { event_type ? <ListContainerHeadline>{event_type}</ListContainerHeadline> : null }
-                { prime_street || prime_street === '' ? 
-                    <Details>
-                        <DetailsTitle>Postal Code/Primary Street:</DetailsTitle>
-                        <DetailsText>{prime_street}</DetailsText>
-                    </Details> : null }
-                { dispatch_time ? 
-                    <Details>
-                        <DetailsTitle>Dispatch time:</DetailsTitle>
-                        <DetailsText>{dateString}</DetailsText>
-                    </Details> : null }
-                { cross_streets ? 
-                    <Details>
-                        <DetailsTitle>Cross Streets:</DetailsTitle>
-                        <DetailsText>{cross_streets}</DetailsText>
-                    </Details> : null }
-                { alarm_lev ? 
-                    <Details>
-                        <DetailsTitle>Alarm Level:</DetailsTitle>
-                        <DetailsText>{alarm_lev}</DetailsText>
-                    </Details> : null }
-                { event_num ? 
-                <Details>
-                    <DetailsTitle>Event Number:</DetailsTitle>
-                    <DetailsText>{event_num}</DetailsText>
-                </Details> : null }
+                <Content padder>
+                    <Card style={{ backgroundColor: '#EBEBEB'}}>
+                        <List>
+                            { !isEmpty(event_type) && (
+                                <ListItem style={styles.listItem}>
+                                    <ListContainerHeadline>{event_type}</ListContainerHeadline>
+                                    { !isEmpty(prime_street) ? 
+                                        <Details>
+                                            <DetailsTitle>Postal Code/Primary Street:</DetailsTitle>
+                                            <DetailsText>{prime_street}</DetailsText>
+                                        </Details> : null 
+                                    }
+                                </ListItem>
+                            )}
+                            { !isEmpty(dispatch_time) && (
+                                <ListItem>
+                                    <Details>
+                                        <DetailsTitle>Dispatch time:</DetailsTitle>
+                                        <DetailsText>{dateString}</DetailsText>
+                                    </Details>
+                                </ListItem>
+                            )}
+                            { !isEmpty(cross_streets) && (
+                                <ListItem>
+                                    <Details>
+                                        <DetailsTitle>Cross Streets:</DetailsTitle>
+                                        <DetailsText>{cross_streets}</DetailsText>
+                                    </Details>
+                                </ListItem>
+                            )}
+                            { !isEmpty(alarm_lev) && (
+                                <ListItem>
+                                    <Details>
+                                        <DetailsTitle>Alarm Level:</DetailsTitle>
+                                        <DetailsText>{alarm_lev}</DetailsText>
+                                    </Details>
+                                </ListItem>
+                            )}
+                            { !isEmpty(event_num) && (
+                                <ListItem>
+                                    <Details>
+                                        <DetailsTitle>Event Number:</DetailsTitle>
+                                        <DetailsText>{event_num}</DetailsText>
+                                    </Details>
+                                </ListItem>
+                            )}
+                        </List>
+                    </Card>
+                </Content>
             </ListContainer>
         )
     }
 }
 
+const styles = StyleSheet.create({
+    listItem: {
+        alignItems: 'flex-start',
+        flexDirection: 'column'
+    }
+})
+
 // Styled Components
 const ListContainer = styled.View`
-    border-bottom-width: ${StyleSheet.hairlineWidth};
-    border-style: solid;
-    padding: 10px;
-    width: 100%;
+    background-color: transparent;
 `;
 
 const ListContainerHeadline = styled.Text`
-    color: #FFF;
-    font-size: 23px;
+    font-size: 26px;
     font-weight: bold;
     padding: 0 0 10px;
 `;
@@ -72,13 +103,11 @@ const Details = styled.View`
 `;
 
 const DetailsTitle = styled.Text`
-    color: #FFF;
     font-size: 16px;
     font-weight: bold;
 `;
 
 const DetailsText = styled.Text`
-    color: #FFF;
     font-size: 16px;
     padding: 0 0 0 5px;
 `;

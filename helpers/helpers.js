@@ -1,10 +1,10 @@
-export function buildDateString(dispatch_time) {
+export function buildDateString(dispatch_time, hideSeconds) {
     const dateTime = new Date(dispatch_time.replace(' ','T') + 'Z');
     const hours = refineTimestamp(dateTime, 'hours');
     const minutes = refineTimestamp(dateTime, 'minutes');
     const seconds = refineTimestamp(dateTime, 'seconds');
 
-    return `${hours}.${minutes}.${seconds}`;
+    return `${hours}.${minutes}` + (hideSeconds ? `` : `.${seconds}`);
 }
 
 export function refineTimestamp(time, measurement) {
@@ -17,4 +17,8 @@ export function refineTimestamp(time, measurement) {
     }
 
     return time;
+}
+
+export function isEmpty(v) {
+    return !v || v.length === 0;
 }

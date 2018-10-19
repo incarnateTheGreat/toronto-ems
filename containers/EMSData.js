@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Spinner from 'react-native-loading-spinner-overlay';
 import styled from 'styled-components/native';
+import { Toast } from "native-base";
 import { ListView,
          RefreshControl,
          ScrollView,
@@ -30,7 +31,7 @@ export default class EMSData extends React.Component {
             .then(res => res.data)
             .then(res => {
                 parseString(res, { trim: true, explicitArray: false }, (err, results) => {
-                    const updateTimeStamp = buildDateString(results.tfs_active_incidents.update_from_db_time);
+                    const updateTimeStamp = buildDateString(results.tfs_active_incidents.update_from_db_time, true);
                     const data = results.tfs_active_incidents.event;
                     data.sort((a, b) => new Date(b.dispatch_time) - new Date(a.dispatch_time)).reverse();
                     
@@ -42,8 +43,18 @@ export default class EMSData extends React.Component {
                     });
                 });
             })
-            .catch(e => {
-                console.log('Err:', e);
+            .catch(err => {
+                this.setState({
+                    isLoading: false,
+                    refreshing: false
+                }, () => {
+                    Toast.show({
+                        buttonText: "Okay",
+                        duration: 10000,
+                        text: "Sorry. We cannot connect to the server. Try again later.",
+                        type: "warning"
+                    });
+                })
             })
     }
 
@@ -81,11 +92,13 @@ export default class EMSData extends React.Component {
                     animation='fade'
                     visible={this.state.isLoading}
                 />
-                <View>
-                    <Timestamp>
-                        {this.state.updateTimeStamp ? `Updated: ${this.state.updateTimeStamp}` : null}
-                    </Timestamp>
-                </View>
+                {this.state.updateTimeStamp && (
+                    <View>
+                        <Timestamp>
+                            {this.state.updateTimeStamp ? `Updated: ${this.state.updateTimeStamp}` : null}
+                        </Timestamp>
+                    </View>
+                )}
                 <ListView
                     dataSource={this.state.data}
                     renderRow={this.renderRow.bind(this)}
