@@ -15,13 +15,15 @@ export default class MenuNav extends React.Component {
 
         return (
             <View>
-                <Header>
+                <Header noRight='true' style={{ backgroundColor: '#094573' }}>
                     <Left>
                         <Button transparent>
-                            <Icon name='menu' onPress={() => dispatch(DrawerActions.toggleDrawer())} />
+                            <Icon style={{ color: '#FFF' }}
+                                  name='menu' 
+                                  onPress={() => dispatch(DrawerActions.toggleDrawer())} />
                         </Button>
                     </Left>
-                    <Body>
+                    <Body style={{ flex: 2 }}>
                         <HeaderText>Toronto EMS</HeaderText>
                     </Body>
                     <Right />
@@ -34,6 +36,7 @@ export default class MenuNav extends React.Component {
 // Styled Components
 const HeaderText = styled.Text`
     color: #FFF;
+    display: flex;
     font-weight: bold;
     font-size: 26px;
 `;

@@ -109,5 +109,7 @@ const DetailsTitle = styled.Text`
 
 const DetailsText = styled.Text`
     font-size: 16px;
+    flex: 1;
+    flex-shrink: 1;
     padding: 0 0 0 5px;
 `;
