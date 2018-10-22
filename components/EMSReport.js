@@ -26,10 +26,10 @@ export default class EMSReport extends React.Component {
         return (
             <ListContainer>
                 <Content padder>
-                    <Card style={{ backgroundColor: '#EBEBEB'}}>
+                    <NewCard>
                         <List>
                             { !isEmpty(event_type) && (
-                                <ListItem style={styles.listItem}>
+                                <NewListItem>
                                     <ListContainerHeadline>{event_type}</ListContainerHeadline>
                                     { !isEmpty(prime_street) ? 
                                         <Details>
@@ -37,7 +37,7 @@ export default class EMSReport extends React.Component {
                                             <DetailsText>{prime_street}</DetailsText>
                                         </Details> : null 
                                     }
-                                </ListItem>
+                                </NewListItem>
                             )}
                             { !isEmpty(dispatch_time) && (
                                 <ListItem>
@@ -72,23 +72,25 @@ export default class EMSReport extends React.Component {
                                 </ListItem>
                             )}
                         </List>
-                    </Card>
+                    </NewCard>
                 </Content>
             </ListContainer>
         )
     }
 }
 
-const styles = StyleSheet.create({
-    listItem: {
-        alignItems: 'flex-start',
-        flexDirection: 'column'
-    }
-})
-
 // Styled Components
 const ListContainer = styled.View`
     background-color: transparent;
+`;
+
+const NewListItem = styled(ListItem)`
+    align-items: flex-start;
+    flex-direction: column;
+`;
+
+const NewCard = styled(Card)`
+    background-color: #EBEBEB;
 `;
 
 const ListContainerHeadline = styled.Text`

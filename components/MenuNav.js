@@ -15,19 +15,18 @@ export default class MenuNav extends React.Component {
 
         return (
             <View>
-                <Header noRight='true' style={{ backgroundColor: '#094573' }}>
+                <NewHeader>
                     <Left>
                         <Button transparent>
-                            <Icon style={{ color: '#FFF' }}
-                                  name='menu' 
+                            <NewIcon name='menu' 
                                   onPress={() => dispatch(DrawerActions.toggleDrawer())} />
                         </Button>
                     </Left>
-                    <Body style={{ flex: 2 }}>
+                    <NewBody>
                         <HeaderText>Toronto EMS</HeaderText>
-                    </Body>
+                    </NewBody>
                     <Right />
-                </Header>
+                </NewHeader>
             </View>
         )
     }
@@ -39,4 +38,16 @@ const HeaderText = styled.Text`
     display: flex;
     font-weight: bold;
     font-size: 26px;
+`;
+
+const NewHeader = styled(Header)`
+    background-color: #094573;
+`;
+
+const NewIcon = styled(Icon)`
+    color: #FFF;
+`;
+
+const NewBody = styled(Body)`
+    flex: 2;
 `;
