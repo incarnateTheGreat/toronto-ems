@@ -21,7 +21,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.incarnateTheGreat.torontoEMS"
+    },
+    "android": {
+      "package": "com.incarnateTheGreat.torontoEMS"
     }
   }
 }
