@@ -8,7 +8,7 @@ import { ListView,
          ScrollView,
          View } from 'react-native';
 
-import EMSReport from '../components/EMSReport';
+import EMSReportList from '../components/EMSReportList';
 import { SERVER_PATH } from '../constants/constants';
 import { buildDateString } from '../helpers/helpers';
 
@@ -26,6 +26,7 @@ export default class EMSData extends React.Component {
             updateTimeStamp: null
         }
     }
+
     fetchData() {
         axios(SERVER_PATH)
             .then(res => res.data)
@@ -60,7 +61,7 @@ export default class EMSData extends React.Component {
 
     renderRow(data, sectionID, rowID) {
         return (
-            <EMSReport data={data} />
+            <EMSReportList navigation={this.props.navigation} data={data} />
         )
     }
 

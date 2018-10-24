@@ -5,11 +5,11 @@ import MenuNav from '../components/MenuNav';
 import EMSData from './EMSData';
 
 export default class HomeScreen extends React.Component {
-  render() {
+  render() {      
     return (
         <AppView>
             <MenuNav navigation={this.props.navigation} />
-            <EMSData />
+            <EMSData navigation={this.props.navigation} />
         </AppView>
     );
   }
@@ -19,4 +19,5 @@ export default class HomeScreen extends React.Component {
 const AppView = styled.View`
     display: flex;
     height: 100%;
+    margin: 0;
 `;
