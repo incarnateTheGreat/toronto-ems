@@ -26,13 +26,13 @@ export default class EMSReport extends Component {
 
     render() {
 		const { alarm_lev,
-			beat,
-			cross_streets,
-			dispatch_time,
-			event_num,
-			event_type,
-			prime_street,
-			units_disp } = this.props.navigation.state.params.data;
+            beat,
+            cross_streets,
+            dispatch_time,
+            event_num,
+            event_type,
+            prime_street,
+            units_disp } = this.props.navigation.state.params.data;
 
 		// Get Date String
 		const dateString = buildDateString(dispatch_time, true);         
