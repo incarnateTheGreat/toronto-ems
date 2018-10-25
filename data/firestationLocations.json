@@ -1,0 +1,583 @@
+[
+ {
+  "Address": "3300 BAYVIEW AVE",
+  "FULL_NAME": "Fire Station 111",
+  "Beat": "111",
+  "Latitude": "43.79013",
+  "Longitude": "-79.39366"
+ },
+ {
+  "Address": "5700 BATHURST ST",
+  "FULL_NAME": "Fire Station 112",
+  "Beat": "112",
+  "Latitude": "43.77629",
+  "Longitude": "-79.44428"
+ },
+ {
+  "Address": "700 SENECA HILL DR",
+  "FULL_NAME": "Fire Station 113",
+  "Beat": "113",
+  "Latitude": "43.79319",
+  "Longitude": "-79.35084"
+ },
+ {
+  "Address": "12 CANTERBURY PL",
+  "FULL_NAME": "Fire Station 114",
+  "Beat": "114",
+  "Latitude": "43.77264",
+  "Longitude": "-79.41536"
+ },
+ {
+  "Address": "115 PARKWAY FOREST DR",
+  "FULL_NAME": "Fire Station 115",
+  "Beat": "115",
+  "Latitude": "43.77441",
+  "Longitude": "-79.34069"
+ },
+ {
+  "Address": "255 ESTHER SHINER BLVD",
+  "FULL_NAME": "Fire Station 116",
+  "Beat": "116",
+  "Latitude": "43.76915",
+  "Longitude": "-79.36507"
+ },
+ {
+  "Address": "10 WILLIAM CARSON CRES",
+  "FULL_NAME": "Fire Station 121",
+  "Beat": "121",
+  "Latitude": "43.74855",
+  "Longitude": "-79.40678"
+ },
+ {
+  "Address": "2545 BAYVIEW AVE",
+  "FULL_NAME": "Fire Station 122",
+  "Beat": "122",
+  "Latitude": "43.74865",
+  "Longitude": "-79.38373"
+ },
+ {
+  "Address": "143 BOND AVE",
+  "FULL_NAME": "Fire Station 123",
+  "Beat": "123",
+  "Latitude": "43.74582",
+  "Longitude": "-79.34673"
+ },
+ {
+  "Address": "1109 LESLIE ST",
+  "FULL_NAME": "Fire Station 125",
+  "Beat": "125",
+  "Latitude": "43.72115",
+  "Longitude": "-79.34911"
+ },
+ {
+  "Address": "3135 YONGE ST",
+  "FULL_NAME": "Fire Station 131",
+  "Beat": "131",
+  "Latitude": "43.72623",
+  "Longitude": "-79.40216"
+ },
+ {
+  "Address": "476 LAWRENCE AVE W",
+  "FULL_NAME": "Fire Station 132",
+  "Beat": "132",
+  "Latitude": "43.71981",
+  "Longitude": "-79.42857"
+ },
+ {
+  "Address": "1505 LAWRENCE AVE W",
+  "FULL_NAME": "Fire Station 133",
+  "Beat": "133",
+  "Latitude": "43.7072",
+  "Longitude": "-79.48219"
+ },
+ {
+  "Address": "16 MONTGOMERY AVE",
+  "FULL_NAME": "Fire Station 134",
+  "Beat": "134",
+  "Latitude": "43.70967",
+  "Longitude": "-79.39977"
+ },
+ {
+  "Address": "641 EGLINTON AVE W",
+  "FULL_NAME": "Fire Station 135",
+  "Beat": "135",
+  "Latitude": "43.70276",
+  "Longitude": "-79.41637"
+ },
+ {
+  "Address": "4100 KEELE ST",
+  "FULL_NAME": "Fire Station 141",
+  "Beat": "141",
+  "Latitude": "43.76683",
+  "Longitude": "-79.49273"
+ },
+ {
+  "Address": "2753 JANE ST",
+  "FULL_NAME": "Fire Station 142",
+  "Beat": "142",
+  "Latitude": "43.74599",
+  "Longitude": "-79.51437"
+ },
+ {
+  "Address": "1009 SHEPPARD AVE W",
+  "FULL_NAME": "Fire Station 143",
+  "Beat": "143",
+  "Latitude": "43.75066",
+  "Longitude": "-79.45973"
+ },
+ {
+  "Address": "20 BEFFORT RD",
+  "FULL_NAME": "Fire Station 145",
+  "Beat": "145",
+  "Latitude": "43.73476",
+  "Longitude": "-79.46004"
+ },
+ {
+  "Address": "2220 JANE ST",
+  "FULL_NAME": "Fire Station 146",
+  "Beat": "146",
+  "Latitude": "43.72358",
+  "Longitude": "-79.50978"
+ },
+ {
+  "Address": "900 TAPSCOTT RD",
+  "FULL_NAME": "Fire Station 211",
+  "Beat": "211",
+  "Latitude": "43.824",
+  "Longitude": "-79.24287"
+ },
+ {
+  "Address": "8500 SHEPPARD AVE E",
+  "FULL_NAME": "Fire Station 212",
+  "Beat": "212",
+  "Latitude": "43.80494",
+  "Longitude": "-79.18862"
+ },
+ {
+  "Address": "7 LAPSLEY RD",
+  "FULL_NAME": "Fire Station 213",
+  "Beat": "213",
+  "Latitude": "43.79541",
+  "Longitude": "-79.22597"
+ },
+ {
+  "Address": "745 MEADOWVALE RD",
+  "FULL_NAME": "Fire Station 214",
+  "Beat": "214",
+  "Latitude": "43.79422",
+  "Longitude": "-79.16360"
+ },
+ {
+  "Address": "5318 LAWRENCE AVE E",
+  "FULL_NAME": "Fire Station 215",
+  "Beat": "215",
+  "Latitude": "43.7774",
+  "Longitude": "-79.14807"
+ },
+ {
+  "Address": "2575 EGLINTON AVE E",
+  "FULL_NAME": "Fire Station 221",
+  "Beat": "221",
+  "Latitude": "43.7348",
+  "Longitude": "-79.25507"
+ },
+ {
+  "Address": "755 WARDEN AVE",
+  "FULL_NAME": "Fire Station 222",
+  "Beat": "222",
+  "Latitude": "43.72041",
+  "Longitude": "-79.28410"
+ },
+ {
+  "Address": "116 DORSET RD",
+  "FULL_NAME": "Fire Station 223",
+  "Beat": "223",
+  "Latitude": "43.72396",
+  "Longitude": "-79.23326"
+ },
+ {
+  "Address": "1313 WOODBINE AVE",
+  "FULL_NAME": "Fire Station 224",
+  "Beat": "224",
+  "Latitude": "43.69519",
+  "Longitude": "-79.31660"
+ },
+ {
+  "Address": "3600 DANFORTH AVE",
+  "FULL_NAME": "Fire Station 225",
+  "Beat": "225",
+  "Latitude": "43.69593",
+  "Longitude": "-79.26850"
+ },
+ {
+  "Address": "87 MAIN ST",
+  "FULL_NAME": "Fire Station 226",
+  "Beat": "226",
+  "Latitude": "43.68193",
+  "Longitude": "-79.29907"
+ },
+ {
+  "Address": "1904 QUEEN ST E",
+  "FULL_NAME": "Fire Station 227",
+  "Beat": "227",
+  "Latitude": "43.66917",
+  "Longitude": "-79.30504"
+ },
+ {
+  "Address": "740 MARKHAM RD",
+  "FULL_NAME": "Fire Station 231",
+  "Beat": "231",
+  "Latitude": "43.76465",
+  "Longitude": "-79.22779"
+ },
+ {
+  "Address": "1550 MIDLAND AVE",
+  "FULL_NAME": "Fire Station 232",
+  "Beat": "232",
+  "Latitude": "43.75497",
+  "Longitude": "-79.26685"
+ },
+ {
+  "Address": "59 CURLEW DR",
+  "FULL_NAME": "Fire Station 233",
+  "Beat": "233",
+  "Latitude": "43.74411",
+  "Longitude": "-79.31452"
+ },
+ {
+  "Address": "40 CORONATION DR",
+  "FULL_NAME": "Fire Station 234",
+  "Beat": "234",
+  "Latitude": "43.76108",
+  "Longitude": "-79.19153"
+ },
+ {
+  "Address": "200 BERMONDSEY RD",
+  "FULL_NAME": "Fire Station 235",
+  "Beat": "235",
+  "Latitude": "43.72425",
+  "Longitude": "-79.31493"
+ },
+ {
+  "Address": "3325 WARDEN AVE",
+  "FULL_NAME": "Fire Station 241",
+  "Beat": "241",
+  "Latitude": "43.81405",
+  "Longitude": "-79.32381"
+ },
+ {
+  "Address": "2733 BRIMLEY RD",
+  "FULL_NAME": "Fire Station 242",
+  "Beat": "242",
+  "Latitude": "43.80693",
+  "Longitude": "-79.27726"
+ },
+ {
+  "Address": "4560 SHEPPARD AVE E",
+  "FULL_NAME": "Fire Station 243",
+  "Beat": "243",
+  "Latitude": "43.78915",
+  "Longitude": "-79.26296"
+ },
+ {
+  "Address": "2340 BIRCHMOUNT RD",
+  "FULL_NAME": "Fire Station 244",
+  "Beat": "244",
+  "Latitude": "43.78169",
+  "Longitude": "-79.29912"
+ },
+ {
+  "Address": "1600 BIRCHMOUNT RD",
+  "FULL_NAME": "Fire Station 245",
+  "Beat": "245",
+  "Latitude": "43.7627",
+  "Longitude": "-79.29152"
+ },
+ {
+  "Address": "20 BALMORAL AVE",
+  "FULL_NAME": "Fire Station 311",
+  "Beat": "311",
+  "Latitude": "43.68596",
+  "Longitude": "-79.39398"
+ },
+ {
+  "Address": "34 YORKVILLE AVE",
+  "FULL_NAME": "Fire Station 312",
+  "Beat": "312",
+  "Latitude": "43.67188",
+  "Longitude": "-79.38892"
+ },
+ {
+  "Address": "441 BLOOR ST E",
+  "FULL_NAME": "Fire Station 313",
+  "Beat": "313",
+  "Latitude": "43.6721",
+  "Longitude": "-79.37556"
+ },
+ {
+  "Address": "12 GROSVENOR ST",
+  "FULL_NAME": "Fire Station 314",
+  "Beat": "314",
+  "Latitude": "43.66307",
+  "Longitude": "-79.38467"
+ },
+ {
+  "Address": "132 BELLEVUE AVE",
+  "FULL_NAME": "Fire Station 315",
+  "Beat": "315",
+  "Latitude": "43.65683",
+  "Longitude": "-79.40479"
+ },
+ {
+  "Address": "231 MCRAE DR",
+  "FULL_NAME": "Fire Station 321",
+  "Beat": "321",
+  "Latitude": "43.70872",
+  "Longitude": "-79.36485"
+ },
+ {
+  "Address": "256 COSBURN AVE",
+  "FULL_NAME": "Fire Station 322",
+  "Beat": "322",
+  "Latitude": "43.69099",
+  "Longitude": "-79.34235"
+ },
+ {
+  "Address": "153 CHATHAM AVE",
+  "FULL_NAME": "Fire Station 323",
+  "Beat": "323",
+  "Latitude": "43.67955",
+  "Longitude": "-79.33466"
+ },
+ {
+  "Address": "840 GERRARD ST E",
+  "FULL_NAME": "Fire Station 324",
+  "Beat": "324",
+  "Latitude": "43.66777",
+  "Longitude": "-79.34352"
+ },
+ {
+  "Address": "475 DUNDAS ST E",
+  "FULL_NAME": "Fire Station 325",
+  "Beat": "325",
+  "Latitude": "43.65938",
+  "Longitude": "-79.36486"
+ },
+ {
+  "Address": "30 KNOX AVE",
+  "FULL_NAME": "Fire Station 326",
+  "Beat": "326",
+  "Latitude": "43.66155",
+  "Longitude": "-79.32501"
+ },
+ {
+  "Address": "33 CLAREMONT ST",
+  "FULL_NAME": "Fire Station 331",
+  "Beat": "331",
+  "Latitude": "43.64735",
+  "Longitude": "-79.40977"
+ },
+ {
+  "Address": "260 ADELAIDE ST W",
+  "FULL_NAME": "Fire Station 332",
+  "Beat": "332",
+  "Latitude": "43.64832",
+  "Longitude": "-79.38956"
+ },
+ {
+  "Address": "207 FRONT ST E",
+  "FULL_NAME": "Fire Station 333",
+  "Beat": "333",
+  "Latitude": "43.65053",
+  "Longitude": "-79.36616"
+ },
+ {
+  "Address": "339 QUEENS QUAY W",
+  "FULL_NAME": "Fire Station 334",
+  "Beat": "334",
+  "Latitude": "43.6377",
+  "Longitude": "-79.38862"
+ },
+ {
+  "Address": "235 CIBOLA AVE",
+  "FULL_NAME": "Fire Station 335",
+  "Beat": "335",
+  "Latitude": "43.62541",
+  "Longitude": "-79.35908"
+ },
+ {
+  "Address": "555 OAKWOOD AVE",
+  "FULL_NAME": "Fire Station 341",
+  "Beat": "341",
+  "Latitude": "43.69453",
+  "Longitude": "-79.44115"
+ },
+ {
+  "Address": "106 ASCOT AVE",
+  "FULL_NAME": "Fire Station 342",
+  "Beat": "342",
+  "Latitude": "43.67937",
+  "Longitude": "-79.44863"
+ },
+ {
+  "Address": "65 HENDRICK AVE",
+  "FULL_NAME": "Fire Station 343",
+  "Beat": "343",
+  "Latitude": "43.68011",
+  "Longitude": "-79.43076"
+ },
+ {
+  "Address": "240 HOWLAND AVE",
+  "FULL_NAME": "Fire Station 344",
+  "Beat": "344",
+  "Latitude": "43.67297",
+  "Longitude": "-79.41183"
+ },
+ {
+  "Address": "1285 DUFFERIN ST",
+  "FULL_NAME": "Fire Station 345",
+  "Beat": "345",
+  "Latitude": "43.66741",
+  "Longitude": "-79.43816"
+ },
+ {
+  "Address": "90 QUEBEC ST",
+  "FULL_NAME": "Fire Station 346",
+  "Beat": "346",
+  "Latitude": "43.63368",
+  "Longitude": "-79.42133"
+ },
+ {
+  "Address": "75 TORYORK DR",
+  "FULL_NAME": "Fire Station 411",
+  "Beat": "411",
+  "Latitude": "43.75526",
+  "Longitude": "-79.54916"
+ },
+ {
+  "Address": "267 HUMBERLINE DR",
+  "FULL_NAME": "Fire Station 412",
+  "Beat": "412",
+  "Latitude": "43.73812",
+  "Longitude": "-79.61764"
+ },
+ {
+  "Address": "1549 ALBION RD",
+  "FULL_NAME": "Fire Station 413",
+  "Beat": "413",
+  "Latitude": "43.74023",
+  "Longitude": "-79.58691"
+ },
+ {
+  "Address": "2120 KIPLING AVE",
+  "FULL_NAME": "Fire Station 415",
+  "Beat": "415",
+  "Latitude": "43.71788",
+  "Longitude": "-79.57038"
+ },
+ {
+  "Address": "6 LAMBTON AVE",
+  "FULL_NAME": "Fire Station 421",
+  "Beat": "421",
+  "Latitude": "43.68431",
+  "Longitude": "-79.48531"
+ },
+ {
+  "Address": "590 JANE ST",
+  "FULL_NAME": "Fire Station 422",
+  "Beat": "422",
+  "Latitude": "43.66441",
+  "Longitude": "-79.49094"
+ },
+ {
+  "Address": "358 KEELE ST",
+  "FULL_NAME": "Fire Station 423",
+  "Beat": "423",
+  "Latitude": "43.66475",
+  "Longitude": "-79.46476"
+ },
+ {
+  "Address": "83 DEFOREST RD",
+  "FULL_NAME": "Fire Station 425",
+  "Beat": "425",
+  "Latitude": "43.64799",
+  "Longitude": "-79.47807"
+ },
+ {
+  "Address": "140 LANSDOWNE AVE",
+  "FULL_NAME": "Fire Station 426",
+  "Beat": "426",
+  "Latitude": "43.6451",
+  "Longitude": "-79.43887"
+ },
+ {
+  "Address": "308 PRINCE EDWARD DR S",
+  "FULL_NAME": "Fire Station 431",
+  "Beat": "431",
+  "Latitude": "43.64645",
+  "Longitude": "-79.50485"
+ },
+ {
+  "Address": "155 THE EAST MALL",
+  "FULL_NAME": "Fire Station 432",
+  "Beat": "432",
+  "Latitude": "43.62335",
+  "Longitude": "-79.54935"
+ },
+ {
+  "Address": "615 ROYAL YORK RD",
+  "FULL_NAME": "Fire Station 433",
+  "Beat": "433",
+  "Latitude": "43.62803",
+  "Longitude": "-79.50294"
+ },
+ {
+  "Address": "3 LUNNESS RD",
+  "FULL_NAME": "Fire Station 434",
+  "Beat": "434",
+  "Latitude": "43.60258",
+  "Longitude": "-79.54399"
+ },
+ {
+  "Address": "130 EIGHTH ST",
+  "FULL_NAME": "Fire Station 435",
+  "Beat": "435",
+  "Latitude": "43.60113",
+  "Longitude": "-79.50697"
+ },
+ {
+  "Address": "947 MARTIN GROVE RD",
+  "FULL_NAME": "Fire Station 441",
+  "Beat": "441",
+  "Latitude": "43.69497",
+  "Longitude": "-79.57192"
+ },
+ {
+  "Address": "2015 LAWRENCE AVE W",
+  "FULL_NAME": "Fire Station 442",
+  "Beat": "442",
+  "Latitude": "43.7006",
+  "Longitude": "-79.51238"
+ },
+ {
+  "Address": "1724 ISLINGTON AVE",
+  "FULL_NAME": "Fire Station 443",
+  "Beat": "443",
+  "Latitude": "43.67808",
+  "Longitude": "-79.53856"
+ },
+ {
+  "Address": "666 RENFORTH DR",
+  "FULL_NAME": "Fire Station 444",
+  "Beat": "444",
+  "Latitude": "43.65747",
+  "Longitude": "-79.58270"
+ },
+ {
+  "Address": "280 BURNHAMTHORPE RD",
+  "FULL_NAME": "Fire Station 445",
+  "Beat": "445",
+  "Latitude": "43.64936",
+  "Longitude": "-79.54510"
+ }
+]

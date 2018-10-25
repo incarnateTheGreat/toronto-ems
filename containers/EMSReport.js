@@ -3,12 +3,16 @@ import { View } from 'react-native';
 import { ScrollView } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import styled from 'styled-components/native';
+import Geocoder from 'react-native-geocoding';
 import { List,
          ListItem } from 'native-base';
 
 import { buildDateString, 
          isEmpty } from '../helpers/helpers';
 import MenuNav from '../components/MenuNav';
+import { LIST_OF_TORONTO_CODES } from '../constants/constants';
+
+const FIRE_STATIONS = require('../data/firestationLocations.json');
 
 export default class EMSReport extends Component {
     constructor() {
@@ -16,13 +20,76 @@ export default class EMSReport extends Component {
 
         this.state = {
             region: {
-                latitude: 37.78825,
-                longitude: -122.4324,
+                latitude: null,
+                longitude: null,
                 latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-            }
+                longitudeDelta: 0.0421
+			},
+			markers: {
+				coordinates: {
+					latitude: null,
+					longitude: null
+				},
+				title: null,
+				description: null
+			}
         }
-    }
+	}
+
+	validateCrossStreets(cross_streets) {
+		return !isEmpty(cross_streets) && cross_streets.length > 3 ? true : false;
+	}
+	
+	componentDidMount() {		
+		/*
+			Priority goes as follows:
+			1) If Cross Street is either blank or unusable, then,
+			2) use Closest Station. If THIS is blank or unusable, then,
+			3) do not show a Map.
+		*/
+
+		const { cross_streets,
+				beat } = this.props.navigation.state.params.data;
+
+		let searchAttr = null;
+
+		// Init Geocoder.
+		Geocoder.setApiKey('AIzaSyCnLLSYZgjSeCReaKlGAJJntl61AIYL81g');
+
+		const closestStation = FIRE_STATIONS.find(station => beat === station.Beat);
+
+		// Determine appropriate data to be used.
+		if (this.validateCrossStreets(cross_streets)) {					
+			searchAttr = cross_streets.includes('/') ? cross_streets.replace(' / ', ' and ') : cross_streets;
+		} 
+		
+		// If the Cross Streets data isn't usable, then use the Beat Location.
+		if (!searchAttr) {
+			searchAttr = closestStation.Address;
+		}
+
+		Geocoder.from(`${searchAttr}, Toronto`).then(json => {
+			const { lat, lng } = json.results.length > 0 ? json.results.shift().geometry.location : null;
+
+			this.setState({
+				region: {
+					latitude: lat,
+					longitude: lng,
+					latitudeDelta: 0.0535,
+                	longitudeDelta: 0.0535
+				},
+				marker: {
+					coordinates: {
+						latitude: lat,
+						longitude: lng
+					},
+					title: 'Foo Place',
+					description: '1234 Foo Drive'
+				}
+			})
+			
+		}).catch(error => console.warn(error));
+	}
 
     render() {
 		const { alarm_lev,
@@ -32,21 +99,29 @@ export default class EMSReport extends Component {
             event_num,
             event_type,
             prime_street,
-            units_disp } = this.props.navigation.state.params.data;
-
+			units_disp } = this.props.navigation.state.params.data;
+			
 		// Get Date String
-		const dateString = buildDateString(dispatch_time, true);         
+		const dateString = buildDateString(dispatch_time, true);
 
 		return (
 			<AppView>
 				<MenuNav navigation={this.props.navigation} />
 					<MapCard>
 						<MapContainer>
-							<MapViewContainer
-								provider={PROVIDER_GOOGLE}
-								initialRegion={this.state.region}
-								ref={map => this.map = map}
-							/>
+							{this.state.region.latitude && (
+								<MapViewContainer
+									enableZoomControl={true}
+									provider={PROVIDER_GOOGLE}
+									initialRegion={this.state.region}
+									ref={map => this.map = map}
+								>
+									<MapView.Marker
+										coordinate={this.state.marker.coordinates}
+										title={this.state.marker.title}
+										description={this.state.marker.description} />
+								</MapViewContainer>
+							)}
 						</MapContainer>
 					</MapCard>
 					<ScrollView>
