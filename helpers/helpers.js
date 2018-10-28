@@ -19,6 +19,10 @@ export function refineTimestamp(time, measurement) {
     return time;
 }
 
+export function validateCrossStreets(cross_streets) {
+    return !isEmpty(cross_streets) && cross_streets.length > 3 ? true : false;
+}
+
 export function isEmpty(v) {
     return !v || v.length === 0;
 }

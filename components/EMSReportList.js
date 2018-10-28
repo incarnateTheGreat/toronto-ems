@@ -6,7 +6,8 @@ import { Card,
          List,
          ListItem } from 'native-base';
 
-import { buildDateString, 
+import { buildDateString,
+         validateCrossStreets,
          isEmpty } from '../helpers/helpers';
 
 export default class EMSReportList extends React.Component {
@@ -15,6 +16,22 @@ export default class EMSReportList extends React.Component {
         navigate('Settings', { data });
     }
 
+    getStreetData() {
+        const { cross_streets,
+                prime_street } = this.props.data;
+
+        let searchAttr = null;
+
+        // Determine appropriate data to be used.
+		if (validateCrossStreets(cross_streets)) {					
+			searchAttr = cross_streets.includes('/') ? cross_streets.replace(' / ', ' and ') : cross_streets;
+		} else {
+            searchAttr = prime_street;
+        }
+
+        return searchAttr;
+    }
+ 
     render() {
         const { dispatch_time,
                 event_num,
@@ -33,12 +50,10 @@ export default class EMSReportList extends React.Component {
                                 { !isEmpty(event_type) && (
                                     <NewListItem>
                                         <ListContainerHeadline>{event_type}</ListContainerHeadline>
-                                        { !isEmpty(prime_street) ? 
-                                            <Details>
-                                                <DetailsTitle>Postal Code/Primary Street:</DetailsTitle>
-                                                <DetailsText>{prime_street}</DetailsText>
-                                            </Details> : null 
-                                        }
+                                        <Details>
+                                            <DetailsTitle>Area:</DetailsTitle>
+                                            <DetailsText>{this.getStreetData()}</DetailsText>
+                                        </Details> 
                                     </NewListItem>
                                 )}
                             </List>

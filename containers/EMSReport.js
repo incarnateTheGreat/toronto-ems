@@ -7,7 +7,8 @@ import Geocoder from 'react-native-geocoding';
 import { List,
          ListItem } from 'native-base';
 
-import { buildDateString, 
+import { buildDateString,
+		 validateCrossStreets, 
          isEmpty } from '../helpers/helpers';
 import MenuNav from '../components/MenuNav';
 import { LIST_OF_TORONTO_CODES } from '../constants/constants';
@@ -35,10 +36,6 @@ export default class EMSReport extends Component {
 			}
         }
 	}
-
-	validateCrossStreets(cross_streets) {
-		return !isEmpty(cross_streets) && cross_streets.length > 3 ? true : false;
-	}
 	
 	componentDidMount() {		
 		/*
@@ -59,7 +56,7 @@ export default class EMSReport extends Component {
 		const closestStation = FIRE_STATIONS.find(station => beat === station.Beat);
 
 		// Determine appropriate data to be used.
-		if (this.validateCrossStreets(cross_streets)) {					
+		if (validateCrossStreets(cross_streets)) {					
 			searchAttr = cross_streets.includes('/') ? cross_streets.replace(' / ', ' and ') : cross_streets;
 		} 
 		
@@ -85,7 +82,6 @@ export default class EMSReport extends Component {
 					}
 				}
 			})
-			
 		}).catch(error => console.warn(error));
 	}
 
