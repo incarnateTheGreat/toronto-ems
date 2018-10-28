@@ -6,8 +6,7 @@ import { Card,
          List,
          ListItem } from 'native-base';
 
-import { buildDateString,
-         validateCrossStreets,
+import { validateCrossStreets,
          isEmpty } from '../helpers/helpers';
 
 export default class EMSReportList extends React.Component {
@@ -35,11 +34,7 @@ export default class EMSReportList extends React.Component {
     render() {
         const { dispatch_time,
                 event_num,
-                event_type,
-                prime_street } = this.props.data;
-
-        // Get Date String
-        const dateString = buildDateString(dispatch_time, true);         
+                event_type } = this.props.data;
 
         return (
             <TouchableOpacity key={event_num} onPress={() => this.navigate(this.props.data)}>
