@@ -75,16 +75,14 @@ export default class EMSReport extends Component {
 				region: {
 					latitude: lat,
 					longitude: lng,
-					latitudeDelta: 0.0535,
-                	longitudeDelta: 0.0535
+					latitudeDelta: 0.0335,
+                	longitudeDelta: 0.0335
 				},
 				marker: {
 					coordinates: {
 						latitude: lat,
 						longitude: lng
-					},
-					title: 'Foo Place',
-					description: '1234 Foo Drive'
+					}
 				}
 			})
 			
@@ -112,14 +110,17 @@ export default class EMSReport extends Component {
 							{this.state.region.latitude && (
 								<MapViewContainer
 									enableZoomControl={true}
-									provider={PROVIDER_GOOGLE}
 									initialRegion={this.state.region}
+									provider={PROVIDER_GOOGLE}
 									ref={map => this.map = map}
 								>
-									<MapView.Marker
-										coordinate={this.state.marker.coordinates}
-										title={this.state.marker.title}
-										description={this.state.marker.description} />
+									<MapView.Circle
+										center={this.state.marker.coordinates}
+										fillColor="rgba(128, 191, 255, 0.2)"
+										radius={500}
+										strokeWidth={2}
+										strokeColor="#3399ff"
+									/>
 								</MapViewContainer>
 							)}
 						</MapContainer>
