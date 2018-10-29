@@ -110,7 +110,7 @@ const RouterNav = createStackNavigator({
 })
 
 // Styled Components
-const AppContainer = styled.View`
+const AppContainer = styled(View)`
     flex: 1;
     flexDirection: column;
     paddingTop: ${Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight};

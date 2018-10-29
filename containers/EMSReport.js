@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Button, Icon } from 'react-native';
 import { ScrollView } from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView from 'react-native-maps';
 import styled from 'styled-components/native';
 import Geocoder from 'react-native-geocoding';
 import { List,
@@ -34,7 +34,7 @@ export default class EMSReport extends Component {
 				title: null,
 				description: null
 			}
-        }
+		}
 	}
 	
 	componentDidMount() {		
@@ -75,7 +75,7 @@ export default class EMSReport extends Component {
 					latitudeDelta: 0.0335,
                 	longitudeDelta: 0.0335
 				},
-				marker: {
+				markers: {
 					coordinates: {
 						latitude: lat,
 						longitude: lng
@@ -83,6 +83,40 @@ export default class EMSReport extends Component {
 				}
 			})
 		}).catch(error => console.warn(error));
+	}
+
+	onPressZoomIn() {		
+		this.setState({
+			region: {
+				latitude: this.state.region.latitude,
+				longitude: this.state.region.longitude,
+				latitudeDelta: this.state.region.latitudeDelta / 2,
+				longitudeDelta: this.state.region.longitudeDelta / 2,
+			},
+			markers: {
+				coordinates: {
+					latitude: this.state.markers.coordinates.latitude,
+					longitude: this.state.markers.coordinates.longitude
+				}
+			}
+		})
+	}
+
+	onPressZoomOut() {
+		this.setState({
+			region: {
+				latitude: this.state.region.latitude,
+				longitude: this.state.region.longitude,
+				latitudeDelta: this.state.region.latitudeDelta * 2,
+				longitudeDelta: this.state.region.longitudeDelta * 2,
+			},
+			marker: {
+				coordinates: {
+					latitude: this.state.markers.coordinates.latitude,
+					longitude: this.state.markers.coordinates.longitude
+				}
+			}
+		})
 	}
 
     render() {
@@ -106,12 +140,12 @@ export default class EMSReport extends Component {
 							{this.state.region.latitude && (
 								<MapViewContainer
 									enableZoomControl={true}
-									initialRegion={this.state.region}
-									provider={PROVIDER_GOOGLE}
+									region={this.state.region}
 									ref={map => this.map = map}
+									zoomEnabled={true}
 								>
 									<MapView.Circle
-										center={this.state.marker.coordinates}
+										center={this.state.markers.coordinates}
 										fillColor="rgba(128, 191, 255, 0.2)"
 										radius={500}
 										strokeWidth={2}
@@ -119,6 +153,16 @@ export default class EMSReport extends Component {
 									/>
 								</MapViewContainer>
 							)}
+							<ZoomButtonsContainer>
+								<ZoomButtons
+									accessibilityLabel="Zoom In"
+									onPress={() => this.onPressZoomIn()}
+									title="+" />
+								<ZoomButtons
+									accessibilityLabel="Zoom Out"
+									onPress={() => this.onPressZoomOut()}
+									title="-" />
+							</ZoomButtonsContainer>
 						</MapContainer>
 					</MapCard>
 					<ScrollView>
@@ -225,6 +269,18 @@ const InfoCard = styled(View)`
     background-color: #EBEBEB;
 `;
 
+const ZoomButtonsContainer = styled(View)`
+	flex: 1;
+	flexDirection: column;
+	left: 0;
+	height: 90px;
+	padding: 0 0 10px 10px;
+	justifyContent: space-between;
+	position: absolute;
+`;
+
+const ZoomButtons = styled(Button)``;
+
 // Styled Components (EMSReport)
 const NewListItem = styled(ListItem)`
     align-items: flex-start;
@@ -253,174 +309,3 @@ const DetailsText = styled.Text`
     flex-shrink: 1;
     padding: 0 0 0 5px;
 `;
-
-
-const mapStyle = [
-    {
-      "elementType": "geometry",
-      "stylers": [
-        {
-          "color": "#f5f5f5"
-        }
-      ]
-    },
-    {
-      "elementType": "labels.icon",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "elementType": "labels.text.fill",
-      "stylers": [
-        {
-          "color": "#616161"
-        }
-      ]
-    },
-    {
-      "elementType": "labels.text.stroke",
-      "stylers": [
-        {
-          "color": "#f5f5f5"
-        }
-      ]
-    },
-    {
-      "featureType": "administrative.land_parcel",
-      "elementType": "labels.text.fill",
-      "stylers": [
-        {
-          "color": "#bdbdbd"
-        }
-      ]
-    },
-    {
-      "featureType": "administrative.neighborhood",
-      "elementType": "labels.text.stroke",
-      "stylers": [
-        {
-          "color": "#ffeb3b"
-        }
-      ]
-    },
-    {
-      "featureType": "poi",
-      "elementType": "geometry",
-      "stylers": [
-        {
-          "color": "#eeeeee"
-        }
-      ]
-    },
-    {
-      "featureType": "poi",
-      "elementType": "labels.text.fill",
-      "stylers": [
-        {
-          "color": "#757575"
-        }
-      ]
-    },
-    {
-      "featureType": "poi.park",
-      "elementType": "geometry",
-      "stylers": [
-        {
-          "color": "#e5e5e5"
-        }
-      ]
-    },
-    {
-      "featureType": "poi.park",
-      "elementType": "labels.text.fill",
-      "stylers": [
-        {
-          "color": "#9e9e9e"
-        }
-      ]
-    },
-    {
-      "featureType": "road",
-      "elementType": "geometry",
-      "stylers": [
-        {
-          "color": "#ffffff"
-        }
-      ]
-    },
-    {
-      "featureType": "road.arterial",
-      "elementType": "labels.text.fill",
-      "stylers": [
-        {
-          "color": "#757575"
-        }
-      ]
-    },
-    {
-      "featureType": "road.highway",
-      "elementType": "geometry",
-      "stylers": [
-        {
-          "color": "#dadada"
-        }
-      ]
-    },
-    {
-      "featureType": "road.highway",
-      "elementType": "labels.text.fill",
-      "stylers": [
-        {
-          "color": "#616161"
-        }
-      ]
-    },
-    {
-      "featureType": "road.local",
-      "elementType": "labels.text.fill",
-      "stylers": [
-        {
-          "color": "#9e9e9e"
-        }
-      ]
-    },
-    {
-      "featureType": "transit.line",
-      "elementType": "geometry",
-      "stylers": [
-        {
-          "color": "#e5e5e5"
-        }
-      ]
-    },
-    {
-      "featureType": "transit.station",
-      "elementType": "geometry",
-      "stylers": [
-        {
-          "color": "#eeeeee"
-        }
-      ]
-    },
-    {
-      "featureType": "water",
-      "elementType": "geometry",
-      "stylers": [
-        {
-          "color": "#c9c9c9"
-        }
-      ]
-    },
-    {
-      "featureType": "water",
-      "elementType": "labels.text.fill",
-      "stylers": [
-        {
-          "color": "#9e9e9e"
-        }
-      ]
-    }
-  ]

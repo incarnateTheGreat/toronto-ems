@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "convert-csv-to-json": "0.0.13",
-    "json-loader": "^0.5.7"
+    "json-loader": "^0.5.7",
+    "supports-color": "^5.5.0"
   }
 }
