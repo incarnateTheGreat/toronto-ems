@@ -20,6 +20,12 @@ export default class EMSReport extends Component {
         super();
 
         this.state = {
+			initialRegion: {
+				latitude: null,
+                longitude: null,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421
+			},
             region: {
                 latitude: null,
                 longitude: null,
@@ -69,6 +75,12 @@ export default class EMSReport extends Component {
 			const { lat, lng } = json.results.length > 0 ? json.results.shift().geometry.location : null;
 
 			this.setState({
+				initialRegion: {
+					latitude: lat,
+					longitude: lng,
+					latitudeDelta: 0.0335,
+                	longitudeDelta: 0.0335
+				},
 				region: {
 					latitude: lat,
 					longitude: lng,
@@ -85,7 +97,7 @@ export default class EMSReport extends Component {
 		}).catch(error => console.warn(error));
 	}
 
-	onPressZoomIn() {		
+	onPressZoomIn() {
 		this.setState({
 			region: {
 				latitude: this.state.region.latitude,
@@ -119,15 +131,37 @@ export default class EMSReport extends Component {
 		})
 	}
 
+	onRegionChangeComplete(regionData) {
+		this.setState({
+			region: {
+				latitude: regionData.latitude,
+				longitude: regionData.longitude,
+				latitudeDelta: regionData.latitudeDelta,
+				longitudeDelta: regionData.longitudeDelta,
+			}
+		})
+	}
+
+	onPressToIncident() {
+		this.setState({
+			region: {
+				latitude: this.state.initialRegion.latitude,
+				longitude: this.state.initialRegion.longitude,
+				latitudeDelta: this.state.initialRegion.latitudeDelta,
+				longitudeDelta: this.state.initialRegion.longitudeDelta,
+			}
+		})
+	}
+
     render() {
 		const { alarm_lev,
-            beat,
-            cross_streets,
-            dispatch_time,
-            event_num,
-            event_type,
-            prime_street,
-			units_disp } = this.props.navigation.state.params.data;
+				beat,
+				cross_streets,
+				dispatch_time,
+				event_num,
+				event_type,
+				prime_street,
+				units_disp } = this.props.navigation.state.params.data;
 			
 		// Get Date String
 		const dateString = buildDateString(dispatch_time, true);
@@ -141,7 +175,9 @@ export default class EMSReport extends Component {
 								<MapViewContainer
 									enableZoomControl={true}
 									region={this.state.region}
+									onRegionChangeComplete={regionData => this.onRegionChangeComplete(regionData)}
 									ref={map => this.map = map}
+									showsTraffic={true}
 									zoomEnabled={true}
 								>
 									<MapView.Circle
@@ -149,8 +185,7 @@ export default class EMSReport extends Component {
 										fillColor="rgba(128, 191, 255, 0.2)"
 										radius={500}
 										strokeWidth={2}
-										strokeColor="#3399ff"
-									/>
+										strokeColor="#3399ff" />
 								</MapViewContainer>
 							)}
 							<ZoomButtonsContainer>
@@ -163,6 +198,12 @@ export default class EMSReport extends Component {
 									onPress={() => this.onPressZoomOut()}
 									title="-" />
 							</ZoomButtonsContainer>
+							<MarkerButtonsContainer>
+								<MarkerButtons
+									accessibilityLabel="Back to Incident"
+									onPress={() => this.onPressToIncident()}
+									title="O" />
+							</MarkerButtonsContainer>
 						</MapContainer>
 					</MapCard>
 					<ScrollView>
@@ -280,6 +321,18 @@ const ZoomButtonsContainer = styled(View)`
 `;
 
 const ZoomButtons = styled(Button)``;
+
+const MarkerButtonsContainer = styled(View)`
+	flex: 1;
+	flexDirection: column;
+	right: 0;
+	height: 90px;
+	padding: 0 10px 10px 0;
+	justifyContent: flex-end;
+	position: absolute;
+`;
+
+const MarkerButtons = styled(Button)``;
 
 // Styled Components (EMSReport)
 const NewListItem = styled(ListItem)`
